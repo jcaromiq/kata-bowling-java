@@ -25,13 +25,14 @@ public class BowlingGame {
         currentRound++;
 
     }
+    private boolean wasPreviousRoundStrike() {
+        return (rounds.size()>0
+                && rounds.get(currentRound-1).isStrike());
+    }
 
     private boolean wasPreviousRoundSpare() {
-        if (rounds.size()>0 && 
-                rounds.get(currentRound-1).isSpare()) {
-            return true;
-        }
-        return false;
+        return (rounds.size()>0
+                && rounds.get(currentRound-1).isSpare());
     }
 
     private void validateInputs(int firstThrow, int secondThrow) {
@@ -40,13 +41,7 @@ public class BowlingGame {
         }
     }
 
-    private boolean wasPreviousRoundStrike() {
-        if (rounds.size()>0 &&
-                rounds.get(currentRound-1).isStrike()) {
-            return true;
-        }
-        return false;
-    }
+
 
     public int getScore() {
         return score;
@@ -61,13 +56,6 @@ public class BowlingGame {
             this.secondThrow = secondThrow;
         }
 
-        public int getFirstThrow() {
-            return firstThrow;
-        }
-
-        public int getSecondThrow() {
-            return secondThrow;
-        }
 
         public int getScore() {
             return firstThrow + secondThrow;
