@@ -48,6 +48,20 @@ public class BowlingGameShould {
     @Test(expected =IllegalArgumentException.class)
     public void throw_exception_if_round_score_is_greater_than_ten() throws Exception {
         bowlingGame.throwBalls(10,1);
+    }
 
+    @Test
+    public void return_22_when_strike_and_drop_6_in_next_round() throws Exception {
+        bowlingGame.throwBalls(10,0);
+        bowlingGame.throwBalls(6,0);
+
+        assertThat(bowlingGame.getScore(),is(22));
+    }
+
+    @Test
+    public void return_20_when_spare_and_drop_6_in_next_round() throws Exception {
+        bowlingGame.throwBalls(7,3);
+        bowlingGame.throwBalls(4,2);
+        assertThat(bowlingGame.getScore(),is(20));
     }
 }
