@@ -36,4 +36,14 @@ public class BowlingGameShould {
 
         assertThat(bowlingGame.getScore(),is(2));
     }
+
+    @Test
+    public void return_10_when_fhe_first_round_drop_4_and_second_drop_6() throws Exception {
+        bowlingGame.throwBalls(1,3);
+        bowlingGame.throwBalls(0,6);
+
+        assertThat(bowlingGame.getScore(),is(10));
+    }
+
+    
 }
