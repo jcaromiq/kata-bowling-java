@@ -45,5 +45,9 @@ public class BowlingGameShould {
         assertThat(bowlingGame.getScore(),is(10));
     }
 
-    
+    @Test(expected =IllegalArgumentException.class)
+    public void throw_exception_if_round_score_is_greater_than_ten() throws Exception {
+        bowlingGame.throwBalls(10,1);
+
+    }
 }
