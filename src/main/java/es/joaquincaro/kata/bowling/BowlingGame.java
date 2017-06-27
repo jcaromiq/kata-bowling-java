@@ -1,4 +1,4 @@
-package es.joaquincaro.bowling;
+package es.joaquincaro.kata.bowling;
 
 import java.util.ArrayList;
 import java.util.List;

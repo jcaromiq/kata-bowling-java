@@ -1,4 +1,5 @@
-import es.joaquincaro.bowling.BowlingGame;
+package es.joaquincaro.kata.bowling;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
