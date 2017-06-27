@@ -16,58 +16,55 @@ public class BowlingGameShould {
     @Before
     public void setUp() throws Exception {
         bowlingGame = new BowlingGame();
-
-    }
+     }
 
     @Test
     public void return_0_when_no_pins_touched_in_a_row() throws Exception {
-        bowlingGame.throwBalls(0,0);
+        playRound(0, 0);
 
         scoreIs(0);
     }
 
-
-
     @Test
     public void return_1_when_the_first_ball_drop_1_pin_and_second_ball_fails() throws Exception {
-        bowlingGame.throwBalls(1,0);
+        playRound(1, 0);
 
         scoreIs(1);
     }
 
     @Test
     public void return_2_when_the_first_ball_fails_and_the_second_ball_drop_2_pins() throws Exception {
-        bowlingGame.throwBalls(0,2);
+        playRound(0, 2);
 
         scoreIs(2);
     }
 
     @Test
     public void return_10_when_fhe_first_round_drop_4_and_second_drop_6() throws Exception {
-        bowlingGame.throwBalls(1,3);
-        bowlingGame.throwBalls(0,6);
+        playRound(1, 3);
+        playRound(0, 6);
 
         scoreIs(10);
     }
 
     @Test(expected =IllegalArgumentException.class)
     public void throw_exception_if_round_score_is_greater_than_ten() throws Exception {
-        bowlingGame.throwBalls(10,1);
+        playRound(10, 1);
     }
 
     @Test
     public void return_22_when_strike_and_drop_6_in_next_round() throws Exception {
-        bowlingGame.throwBalls(10,0);
-        bowlingGame.throwBalls(6,0);
+        playRound(10, 0);
+        playRound(6, 0);
 
         scoreIs(22);
     }
 
     @Test
     public void return_20_when_spare_and_drop_6_in_next_round() throws Exception {
-        bowlingGame.throwBalls(7,3);
-        bowlingGame.throwBalls(4,2);
-        
+        playRound(7, 3);
+        playRound(4, 2);
+
         scoreIs(20);
     }
 
@@ -78,6 +75,10 @@ public class BowlingGameShould {
                 .forEach(x-> bowlingGame.throwBalls(10,0));
 
         scoreIs(300);
+    }
+
+    private void playRound(int firstThrow, int secondThrow) {
+        bowlingGame.throwBalls(firstThrow, secondThrow);
     }
 
     private void scoreIs(int score) {
