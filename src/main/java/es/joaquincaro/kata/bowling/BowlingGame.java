@@ -12,11 +12,11 @@ public class BowlingGame {
     public void throwBalls(int firstThrow, int secondThrow) {
         Round round = Round.aNew(firstThrow,secondThrow);
         if(wasPreviousRoundStrike()) {
-            score = 10 + round.getScore() + round.getScore();
+            score = 10 + round.getPinsThrowed() + round.getPinsThrowed();
         }else if(wasPreviousRoundSpare()) {
-            score = 10 + firstThrow + round.getScore();
+            score = 10 + firstThrow + round.getPinsThrowed();
         } else {
-            score += round.getScore();
+            score += round.getPinsThrowed();
         }
         saveRound(round);
     }
@@ -51,7 +51,7 @@ public class BowlingGame {
         }
 
 
-        public int getScore() {
+        public int getPinsThrowed() {
             return firstThrow + secondThrow;
         }
 
@@ -60,7 +60,7 @@ public class BowlingGame {
         }
 
         public boolean isSpare() {
-            return (getScore() == 10 && !isStrike());
+            return (getPinsThrowed() == 10 && !isStrike());
         }
 
         public static Round aNew(int firstThrow, int secondThrow) {
@@ -70,7 +70,7 @@ public class BowlingGame {
         }
 
         private void validate() {
-            if(getScore() > 10){
+            if(getPinsThrowed() > 10){
                 throw new IllegalArgumentException();
             }
         }
