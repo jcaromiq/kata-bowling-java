@@ -69,7 +69,15 @@ public class BowlingGameShould {
     }
 
     @Test
-    @Ignore
+    public void return_48_when_strike_and_spare_and_drop_9() throws Exception {
+        playRound(10,0);
+        playRound(5,5);
+        playRound(9,0);
+
+        scoreIs(48);
+    }
+
+    @Test
     public void return_300_in_a_perfect_game() throws Exception {
         IntStream.range(1,12)
                 .forEach(x-> bowlingGame.throwBalls(10,0));

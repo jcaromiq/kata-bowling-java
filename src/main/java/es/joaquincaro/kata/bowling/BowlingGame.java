@@ -1,12 +1,13 @@
 package es.joaquincaro.kata.bowling;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
 public class BowlingGame {
     private List<Round> rounds = new ArrayList<>();
-    private int currentRound;
     private int score;
 
     public void throwBalls(int firstThrow, int secondThrow) {
@@ -23,7 +24,6 @@ public class BowlingGame {
 
     private void saveRound(Round round) {
         rounds.add(round);
-        currentRound++;
     }
 
     public int getScore() {
@@ -32,12 +32,12 @@ public class BowlingGame {
 
     private boolean wasPreviousRoundStrike() {
         return (!rounds.isEmpty()
-                && rounds.get(currentRound-1).isStrike());
+                && rounds.get(rounds.size()-1).isStrike());
     }
 
     private boolean wasPreviousRoundSpare() {
         return (!rounds.isEmpty()
-                && rounds.get(currentRound-1).isSpare());
+                && rounds.get(rounds.size()-1).isSpare());
     }
     
 
