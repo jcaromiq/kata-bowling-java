@@ -65,12 +65,12 @@ public class BowlingGame {
 
         public static Round aNew(int firstThrow, int secondThrow) {
             Round round = new Round(firstThrow, secondThrow);
-            round.validateRound();
+            round.validate();
             return round;
         }
 
-        private void validateRound() {
-            if(firstThrow + secondThrow > 10){
+        private void validate() {
+            if(getScore() > 10){
                 throw new IllegalArgumentException();
             }
         }

@@ -1,6 +1,9 @@
 import es.joaquincaro.bowling.BowlingGame;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.stream.IntStream;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -62,6 +65,15 @@ public class BowlingGameShould {
     public void return_20_when_spare_and_drop_6_in_next_round() throws Exception {
         bowlingGame.throwBalls(7,3);
         bowlingGame.throwBalls(4,2);
+        
         assertThat(bowlingGame.getScore(),is(20));
+    }
+
+    @Test
+    @Ignore
+    public void return_300_in_a_perfect_game() throws Exception {
+        IntStream.range(1,12).forEach(x->bowlingGame.throwBalls(10,0));
+
+        assertThat(bowlingGame.getScore(),is(300));
     }
 }
